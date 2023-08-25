@@ -75,4 +75,4 @@ prev.onclick = () => {
 autoSlider(index)
 
 
-console.log('Hui')
+console.log('bebe')

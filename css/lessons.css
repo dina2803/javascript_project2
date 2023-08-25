@@ -10,11 +10,24 @@
     margin-top: 50px;
     display: flex;
     justify-content: space-evenly;
-    border: 1px solid orange;
+    border: 3px solid darkviolet;
     height: 300px;
-    border-radius: 20px;
+    border-radius: 90px;
     align-items: center;
+    animation: phone 2s;
 }
+@keyframes phone {
+    0%{
+        transform: scale(1.2);
+    }
+    50%{
+        transform: scale(0.8);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
 
 .form_phone {
     display: flex;
@@ -36,8 +49,8 @@
 
 .tab_content_block {
     width: 700px;
-    border: 1px solid orange;
-    padding: 20px;
+    border: 3px solid yellow;
+    padding: 10px;
     border-radius: 10px;
     text-align: center;
     display: flex;
@@ -45,7 +58,18 @@
     flex-direction: column;
     justify-content: center;
     height: 170px;
+    font-family: sans-serif;
+    animation: tab 1s;
 }
+@keyframes tab {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 100;
+    }
+}
+
 
 .tab_content_block p {
     color: white;
@@ -64,7 +88,7 @@
     padding: 10px;
     height: 30px;
     color: white;
-    border: 1px solid orange;
+    border: 1px solid silver;
     text-align: center;
     font-size: 20px;
     cursor: pointer;
@@ -73,7 +97,7 @@
 }
 
 .tab_content_item_active {
-    background: orange;
+    background: #c7fc08;
     color: black;
     font-weight: 600;
     border: 1px solid white;
@@ -100,6 +124,15 @@
     justify-content: center;
     flex-direction: column;
     row-gap: 30px;
+    animation: converter 1s;
+}
+@keyframes converter {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 100;
+    }
 }
 
 .inner_converter > div {
@@ -117,7 +150,7 @@
 .card {
     width: 500px;
     height: 150px;
-    border: 1px solid #F79300;
+    border: 3px solid greenyellow;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -127,7 +160,7 @@
 }
 
 .card p {
-    color: #F79300;
+    color: yellow;
     font-size: 20px;
 }
 

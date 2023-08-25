@@ -7,13 +7,25 @@
 }
 
 .inner_gmail_block {
-    margin-top: 50px;
+    margin-top: 60px;
     display: flex;
     justify-content: space-evenly;
-    border: 1px solid orange;
+    border: 3px solid yellow;
     height: 300px;
-    border-radius: 20px;
+    border-radius: 90px;
     align-items: center;
+    animation: gmail 2s;
+}
+@keyframes gmail {
+    0%{
+        transform: scale(0.8);
+    }
+    50%{
+        transform: scale(1.2);
+    }
+    100%{
+        transform: scale(1);
+    }
 }
 
 .form_gmail {
@@ -37,16 +49,25 @@
 .parent_block {
     height: 500px;
     width: 500px;
-    border: 2px solid orange;
+    border: 2px solid darkviolet;
     position: relative;
     margin: 0 auto;
+    animation: parent 1s;
+}
+@keyframes parent {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 100;
+    }
 }
 
 .child_block {
     position: absolute;
     width: 50px;
     height: 50px;
-    background: red;
+    background: #acd925;
 }
 
 .inner_move_block {
@@ -62,8 +83,17 @@
     font-size: 80px;
     height: 100px;
     width: 100%;
-    border-bottom: 1px solid orange;
+    border-bottom: 5px solid yellow;
     margin-top: 40px;
+    animation: time 1s;
+}
+@keyframes time {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 100;
+    }
 }
 
 .time_block {

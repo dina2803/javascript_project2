@@ -19,18 +19,18 @@ body {
     height: 50px;
     font-size: 20px;
     cursor: pointer;
-    border: 1px solid orange;
-    background: black;
-    color: orange;
+    border: 1px solid darkviolet;
+    background: silver;
+    color: darkviolet;
 }
 
 .btn:hover {
-    background: #414349;
+    background: yellow;
 }
 
 .btn:active {
     background: #56585D;
-    border: 2px solid orange;
+    border: 2px solid darkviolet;
 }
 
 a {
@@ -44,7 +44,7 @@ li {
 h1 {
     text-align: center;
     font-size: 70px;
-    color: white;
+    color: greenyellow;
     margin: 0 auto;
     text-transform: uppercase;
     font-weight: 600;
@@ -76,12 +76,12 @@ h4 {
 }
 
 strong {
-    color: #F79300;
+    color: darkviolet;
 }
 
 label {
     font-size: 24px;
-    color: orange;
+    color: darkviolet;
 }
 
 input {
@@ -89,9 +89,9 @@ input {
     height: 50px;
     font-size: 20px;
     padding-left: 5px;
-    color: orange;
+    color: #faf9f9;
     background: black;
-    border: 2px solid orange;
+    border: 2px solid darkviolet;
 }
 
 .checker {
@@ -103,7 +103,7 @@ input {
     display: block;
     width: 100px;
     height: 100px;
-    background: orange;
+    background: darkviolet;
     color: black;
     font-size: 20px;
     text-transform: uppercase;
@@ -113,7 +113,7 @@ input {
 }
 
 .btn-slide:hover {
-    background: #b68733 !important;
+    background: darkviolet !important;
     cursor: pointer;
     color: white;
 }
