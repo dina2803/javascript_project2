@@ -1,6 +1,4 @@
-
 /* PHONE CHECKER */
-
 .phone_block {
     background: black;
     padding: 100px 0;
@@ -94,6 +92,7 @@
     cursor: pointer;
     display: grid;
     place-content: center;
+    border-radius: 30px;
 }
 
 .tab_content_item_active {
@@ -150,13 +149,26 @@
 .card {
     width: 500px;
     height: 150px;
-    border: 3px solid greenyellow;
+    border: 3px solid violet;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    padding: 10px;
+    padding: 20px;
+    animation: card 6s infinite;
+    background-color: #2f153f;
+}
+@keyframes card {
+   0%{
+       border-radius: 0;
+   }
+   50%{
+       border-radius: 100px;
+   }
+   100%{
+       border-radius: 0;
+   }
 }
 
 .card p {

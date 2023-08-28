@@ -48,6 +48,21 @@ h1 {
     margin: 0 auto;
     text-transform: uppercase;
     font-weight: 600;
+    animation: h1 6s infinite;
+}
+@keyframes h1 {
+    0%{
+        transform: scale(0.9);
+    }
+    50%{
+        transform: scale(0.6);
+    }
+    75%{
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(0.9);
+    }
 }
 
 h2 {

@@ -52,14 +52,17 @@
     border: 2px solid darkviolet;
     position: relative;
     margin: 0 auto;
-    animation: parent 1s;
+    animation: parent 5s infinite;
 }
 @keyframes parent {
     0%{
-        opacity: 0;
+        right: 400px;
+    }
+    50%{
+        right: -400px;
     }
     100%{
-        opacity: 100;
+        right: 400px;
     }
 }
 
