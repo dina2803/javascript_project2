@@ -66,6 +66,36 @@ tabsParent.onclick = (event) => {
     }
 }
 
+//CONVERTER
+const som = document.querySelector('#som')
+const usd = document.querySelector('#usd')
+const euro = document.querySelector('#euro')
+
+const converter = (element, target, rate) => {
+    element.addEventListener('input', () => {
+        const request = new XMLHttpRequest()
+        request.open("GET", "../data/converter.json")
+        request.setRequestHeader("Content-type", "application/json")
+        request.send()
+
+        request.onload = () => {
+            const response = JSON.parse(request.response)
+            target.value = (element.value * response[rate]).toFixed(2)
+            element.value === '' && (target.value = '')
+        }
+    })
+}
+
+converter(som, usd, "som")
+converter(som, euro, "som")
+
+
+converter(usd, som, "usd")
+converter(usd, euro, 'usd_euro')
+
+converter(euro, som, "euro")
+converter(euro, usd, 'euro_usd')
+
 
 //CARD SWITCHER
 const card = document.querySelector('.card')
