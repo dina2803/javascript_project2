@@ -15,7 +15,7 @@ phoneButton.onclick = () => {
     }
 }
 
-//TAB SLIDERowTabContent()
+// TAB SLIDER
 const tabContent = document.querySelectorAll('.tab_content_block')
 const tabs = document.querySelectorAll('.tab_content_item')
 const tabsParent = document.querySelector('.tab_content_items')
@@ -41,6 +41,7 @@ const switchToNextTab = () => {
     currentTab = (currentTab + 1) % tabs.length
     showTabContent(currentTab)
 };
+
 hideTabContent()
 showTabContent(currentTab)
 
@@ -58,29 +59,35 @@ tabsParent.onclick = (event) => {
     if (event.target.classList.contains('tab_content_item')) {
         tabs.forEach((item, i) => {
             if (item === event.target) {
-                hideTabContent();
-                currentTab = i;
+                hideTabContent()
+                currentTab = i
                 showTabContent(currentTab)
             }
         })
     }
 }
 
-//CONVERTER
+// CONVERTER
 const som = document.querySelector('#som')
 const usd = document.querySelector('#usd')
 const euro = document.querySelector('#euro')
 
-const converter = (element, target, rate) => {
-    element.addEventListener('input', () => {
-        const request = new XMLHttpRequest()
-        request.open("GET", "../data/converter.json")
-        request.setRequestHeader("Content-type", "application/json")
-        request.send()
+const fetchData = async (rate) => {
+    try {
+        const response = await fetch("../data/converter.json")
+        const data = await response.json()
+        return data[rate]
+    } catch (error) {
+        console.error('Произошла ошибка:', error)
+        return null
+    }
+}
 
-        request.onload = () => {
-            const response = JSON.parse(request.response)
-            target.value = (element.value * response[rate]).toFixed(2)
+const converter = async (element, target, rate) => {
+    element.addEventListener('input', async () => {
+        const rateValue = await fetchData(rate);
+        if (rateValue !== null) {
+            target.value = (element.value * rateValue).toFixed(2)
             element.value === '' && (target.value = '')
         }
     })
@@ -89,34 +96,35 @@ const converter = (element, target, rate) => {
 converter(som, usd, "som")
 converter(som, euro, "som")
 
-
 converter(usd, som, "usd")
 converter(usd, euro, 'usd_euro')
 
 converter(euro, som, "euro")
 converter(euro, usd, 'euro_usd')
 
-
-//CARD SWITCHER
+// CARD SWITCHER
 const card = document.querySelector('.card')
 const btnPrev = document.querySelector('#btn-prev')
 const btnNext = document.querySelector('#btn-next')
 
 let count = 1
 
-function fetchTask(taskId) {
-    fetch(`https://jsonplaceholder.typicode.com/todos/${taskId}`)
-        .then(response => response.json())
-        .then(data => {
-            card.innerHTML = `
-                <p>${data.title}</p>
-                <p style="color: ${data.completed ? 'greenyellow' : 'red'};">${data.completed}</p>
-                <span>${data.id}</span>
-            `
-        })
+const fetchTask = async (taskId) => {
+    try {
+        const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${taskId}`)
+        const data = await response.json()
+
+        card.innerHTML = `
+            <p>${data.title}</p>
+            <p style="color: ${data.completed ? 'greenyellow' : 'red'};">${data.completed}</p>
+            <span>${data.id}</span>
+        `;
+    } catch (error) {
+        console.error('Произошла ошибка:', error)
+    }
 }
 
-function updateTask(direction) {
+const updateTask = (direction) => {
     if (direction === 'prev') {
         count = count === 1 ? 200 : count - 1
     } else if (direction === 'next') {
@@ -124,17 +132,48 @@ function updateTask(direction) {
     }
     fetchTask(count)
 }
+
 btnPrev.onclick = () => {
     updateTask('prev')
 }
+
 btnNext.onclick = () => {
     updateTask('next')
 }
+
 fetchTask(count)
 
-//fetch запрос по ссылке
-fetch('https://jsonplaceholder.typicode.com/posts')
-    .then(response => response.json())
-    .then(data => {
+// Fetch запрос по ссылке
+const fetchDataFromLink = async (link) => {
+    try {
+        const response = await fetch(link)
+        const data = await response.json();
         console.log(data)
-    })
+    } catch (error) {
+        console.error('Произошла ошибка:', error)
+    }
+}
+
+fetchDataFromLink('https://jsonplaceholder.typicode.com/posts')
+
+// WEATHER API
+const cityName = document.querySelector('.cityName')
+const city = document.querySelector('.city')
+const temp = document.querySelector('.temp')
+const apiKey = 'e417df62e04d3b1b111abeab19cea714'
+const baseUrl = 'https://api.openweathermap.org/data/2.5/weather'
+
+const citySearch = () => {
+    cityName.oninput = async (event) => {
+        try {
+            const response = await fetch(`${baseUrl}?q=${event.target.value}&appid=${apiKey}`)
+            const data = await response.json();
+
+            city.innerHTML = data?.name ? data?.name : 'Город не найден..'
+            temp.innerHTML = data?.main?.temp ? `${Math.round(data.main.temp - 273)}&deg;C` : '...'
+        } catch (error) {
+            console.error('Произошла ошибка:', error)
+        }
+    }
+}
+citySearch()

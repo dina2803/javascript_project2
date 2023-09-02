@@ -156,7 +156,7 @@
     justify-content: space-around;
     align-items: center;
     padding: 20px;
-    animation: card 6s infinite;
+    animation: card 4s infinite;
     background-color: #2f153f;
 }
 @keyframes card {
@@ -197,12 +197,22 @@
     background-color: black;
 }
 
+.inner_weather > div{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .search_block {
     display: flex;
     align-items: center;
     flex-direction: column;
     row-gap: 20px;
     margin: 50px 0;
+}
+
+.weather input {
+    border-radius: 30px;
 }
 
 .city, .temp {

@@ -12,7 +12,6 @@ button.onclick = () => {
     }
 }
 
-
 const box = document. querySelector ( '.child_block')
 let positionX = 0
 let positionY = 0
